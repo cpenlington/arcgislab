@@ -1,59 +1,96 @@
-<!doctype html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9" />
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
-    <title></title>
-    <link rel="stylesheet" href="http://serverapi.arcgisonline.com/jsapi/arcgis/2.5/js/dojo/dijit/themes/tundra/tundra.css">
-    <link rel="stylesheet" href="http://serverapi.arcgisonline.com/jsapi/arcgis/2.5/js/esri/dijit/css/Popup.css">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>ArcGIS API for JavaScript Tutorials: Create a JavaScript starter app</title>
     <style>
-      html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
-      #map{ margin: 0; padding: 0; }
-    </style>
-    <script>var dojoConfig = { parseOnLoad: true };</script>
-    <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5"></script>
-    <script>
-      dojo.require("dijit.layout.BorderContainer");
-      dojo.require("dijit.layout.ContentPane");
-      dojo.require("esri.map");
-      
-      var map;
-      function init() {
-        var initExtent = new esri.geometry.Extent({"xmin":-14052134,"ymin":5562249,"xmax":-13179529,"ymax":5897349,"spatialReference":{"wkid":102100}});
-        map = new esri.Map("map",{extent:initExtent});
-        var basemap = new esri.layers.ArcGISTiledMapServiceLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer");
-        map.addLayer(basemap);
-
-        dojo.connect(map, 'onLoad', function() { 
-          dojo.connect(dijit.byId('map'), 'resize', map, map.resize);
-
-          var points = { 
-            "points": [[-122.63,45.51],[-122.56,45.51],[-122.56,45.55],[-122.62,45.00],[-122.59,45.53]], 
-            "spatialReference": ({ "wkid": 4326 })
-          };
-          var mp = new esri.geometry.Multipoint(points);
-          var wm_mp = esri.geometry.geographicToWebMercator(mp);
-
-          var sms = new esri.symbol.SimpleMarkerSymbol();
-          var infoTemplate = new esri.InfoTemplate("Vernal Pool Locations", ""); 
-          var graphic = new esri.Graphic(wm_mp, sms, '', infoTemplate);
-
-          map.graphics.add(graphic);
-        });
+      html, body, #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
       }
-      dojo.ready(init);
-    </script>
+      
+    </style>
+     <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/themes/light/main.css">
+     <script src="https://js.arcgis.com/4.15/"></script>
+     <script>
+
+     // My Array
+var locs = ["51.38254, -2.362804", "51.235249, -2.297804", "51.086126, -2.210767"]
+
+
+         require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/Graphic",
+      "esri/layers/GraphicsLayer",
+      "esri/geometry/Multipoint",
+      "esri/layers/FeatureLayer",
+  "esri/geometry/Point",
+  "dojo/domReady!"
+      
+    ], function(Map, MapView, Graphic, GraphicsLayer, 
+    Point) {
+        
+      
+          var map = new Map({
+            basemap: "dark-gray"
+          });
+      
+          var view = new MapView({
+            container: "viewDiv",
+            map: map,
+            center: [46.738586,24.774265], // longitude, latitude
+            zoom: 6
+          });
+
+          
+          
+          var graphicsLayer = new GraphicsLayer();
+       map.add(graphicsLayer);
+       
+      // create a point 
+       var Point ={
+        type: "point",
+        longitude: 48.738586,
+         latitude: 24.774265
+         
+       };
+       var simpleMarkerSymbol = {
+         type: "simple-marker",
+         color: [46, 204, 113 ],  // Green
+         outline: {
+           color: [255, 255, 255], // white
+           width: 1
+         }
+       };
+
+       //*** ADD ***//
+      // Create attributes
+      var attributes = {
+        Name: "My point",  // The name of the
+        Location: " Point Dume State Beach",  // The owner of the
+      };
+      // Create popup template
+      var popupTemplate = {
+        title: "{Name}",
+        content: "Test <b>{Location}</b>."
+      };
+
+      var pointGraphic = new Graphic({
+        geometry: Point,
+        symbol: simpleMarkerSymbol,
+        //*** ADD ***//
+        attributes: attributes,
+        popupTemplate: popupTemplate
+      });
+
+      graphicsLayer.add(pointGraphic);
+        });
+        </script>
   </head>
-  
-  <body class="tundra">
-    <div data-dojo-type="dijit.layout.BorderContainer" 
-         data-dojo-props="design:'headline',gutters:false" 
-         style="width: 100%; height: 100%; margin: 0;">
-      <div id="map" 
-           data-dojo-type="dijit.layout.ContentPane" 
-           data-dojo-props="region:'center'"> 
-      </div>
-    </div>
+  <body>
+    <div id="viewDiv"></div>
   </body>
 </html>
