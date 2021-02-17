@@ -34,7 +34,7 @@
     //Add map view
     const view = new MapView({
     map: map,
-    center: [-118.80500,34.02700], //Longitude, latitude
+    center: [44.000104496557114,-77.2579974826127], //Longitude, latitude
     zoom: 13,
     container: "viewDiv"
     });
@@ -46,14 +46,14 @@
     // Create a point
     const point = { //Create a point
     type: "point",
-    longitude: -118.80657463861,
-    latitude: 34.0005930608889
+    longitude: 43.900858095822834, 
+    latitude: -77.23124463917604
     };
     
     //Create a marker
     const simpleMarkerSymbol = {
     type: "simple-marker",
-    color: [226, 119, 40],  // Orange
+    color: [255, 192, 203],  // Pink
     outline: {
         color: [255, 255, 255], // White
         width: 1
@@ -66,8 +66,8 @@
     content: "{Description}"
     }
     const attributes = {
-    Name: "Point 1",
-    Description: "I am a point"
+    Name: "Sandbanks Provincial Park",
+    Description: "For a really romantic setting take a walk at sunset along the Outlet Beach at Sandbanks Provincial Park."
     }
     
     //Create point graphic and set the geometry and symbol properties
