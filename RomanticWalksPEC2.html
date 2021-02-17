@@ -38,6 +38,16 @@
     zoom: 10
   });
   
+    //Create a marker
+    const simpleMarkerSymbol = {
+    type: "simple-marker",
+    color: [255, 192, 203],  // Pink
+    outline: {
+        color: [255, 255, 255], // White
+        width: 1
+    }
+    };
+    
     // Define a pop-up for walking locations
       const popupWalks = {
         "title": "{Name}",
@@ -49,6 +59,7 @@
     url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/RomanticWalksPEC/FeatureServer/0",
     outFields: ["Name","Description"],
     popupTemplate: popupWalks,
+    renderer: simpleMarkerSymbol,
   });
 
   map.add(walksLayer);
