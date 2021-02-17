@@ -36,11 +36,18 @@
     center: [-77.2579974826127, 44.000104496557114],
     zoom: 10
   });
-
+  
+    // Define a pop-up for Trailheads
+      const popupWalks = {
+        "title": "{Name}",
+        "content": "{Description}",
+      }
     
   //Romantic Walks layer
   const walksLayer = new FeatureLayer({
-    url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/RomanticWalksPEC/FeatureServer/0"
+    url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/RomanticWalksPEC/FeatureServer/0",
+    outFields: ["Name","Description"],
+    popupTemplate: popupWalks
   });
 
   map.add(walksLayer);
