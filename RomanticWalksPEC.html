@@ -44,18 +44,14 @@
     map.add(graphicsLayer);
     
     // Create point 1
-    const point1 = { //Create a point
+    const point1 = {
     type: "point",
     longitude: -77.22561727295617,
     latitude: 43.89663751451119
     };
     
     // Create point 2
-    const point2 = { //Create a point
-    type: "point",
-    longitude: -77.12520877441315,
-    latitude: 44.00524890256277
-    };
+    const point2 = {type: "point", longitude: -77.12520877441315, latitude: 44.00524890256277};
     
     //Create a marker
     const simpleMarkerSymbol = {
@@ -85,7 +81,7 @@
     attributes: attributes,
     popupTemplate: popupTemplate
     });
-    graphicsLayer.add(pointGraphic);
+    graphicsLayer.addMany(pointGraphic);
     });
     
 </script>
