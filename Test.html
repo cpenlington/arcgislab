@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>ArcGIS API for JavaScript Tutorials: Add a feature layer</title>
+  <title>Romantic Walks in PEC</title>
   <style>
     html, body, #viewDiv {
       padding: 0;
@@ -37,31 +37,13 @@
     zoom: 10
   });
 
-   //Create a marker
-   // const simpleMarkerSymbol = {
-    //type: "simple-marker",
-    //color: [255, 192, 203],  // Pink
-   // outline: {
-    //color: [255, 255, 255], // White
-      //  width: 1
-   // }
-   // }; 
     
-    //var popupTemplate = new PopupTemplate({
-            //title: "{Name}",
-           // fieldInfos: "{Description}",
-            //showAttachments: false,
-         // });
-    
-//Trailheads feature layer (points)
+  //Romantic Walks layer
   const walksLayer = new FeatureLayer({
     url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/RomanticWalksPEC/FeatureServer/0"
   });
 
   map.add(walksLayer);
-
-    
-    
     
   });
     
