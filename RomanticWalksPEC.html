@@ -39,15 +39,9 @@
     container: "viewDiv"
     });
  
-    //Create multiple new graphics
-    var gpc1 = new Graphic();
-    var gpc2 = new Graphic();
-    var gpc3 = new Graphic();
-    
-    
     //Create a container for graphics
     const graphicsLayer = new GraphicsLayer();
-    map.addMany(graphicsLayer);
+    map.add(graphicsLayer);
     
     // Create point 1
     const point = {
