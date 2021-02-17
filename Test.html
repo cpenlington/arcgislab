@@ -27,24 +27,45 @@
   esriConfig.apiKey = "AAPK4314a026491745d0a74bd0fc4027ebee9T3OP6WIH0WRl4BU3vKmir6Z3VGogrjIZ84N4kt6MhiM5erJZQm41nE4wPJ4Y-Be";
 
   const map = new Map({
-    basemap: "arcgis-topographic"
+    basemap: "arcgis-dark-gray"
   });
 
   const view = new MapView({
     container: "viewDiv",
     map: map,
-    center: [-118.80543,34.02700],
-    zoom: 13
+    center: [-77.2579974826127, 44.000104496557114],
+    zoom: 10
   });
 
+   //Create a marker
+   // const simpleMarkerSymbol = {
+    //type: "simple-marker",
+    //color: [255, 192, 203],  // Pink
+   // outline: {
+    //color: [255, 255, 255], // White
+      //  width: 1
+   // }
+   // }; 
+    
+    var popupTemplate = new PopupTemplate({
+            title: "{Name}",
+            fieldInfos: "{Description}",
+            showAttachments: false,
+          });
+    
 //Trailheads feature layer (points)
   const walksLayer = new FeatureLayer({
-    url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/RomanticWalksPEC/FeatureServer/0"
+    url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/RomanticWalksPEC/FeatureServer/0",
+    infoTemplate: popupTemplate,
   });
 
   map.add(walksLayer);
 
+    
+    
+    
   });
+    
 </script>
 
 </head>
