@@ -38,7 +38,7 @@
     zoom: 10
   });
   
-    // Define a pop-up for Trailheads
+    // Define a pop-up for walking locations
       const popupWalks = {
         "title": "{Name}",
         "content": "{Description}",
@@ -48,7 +48,7 @@
   const walksLayer = new FeatureLayer({
     url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/RomanticWalksPEC/FeatureServer/0",
     outFields: ["Name","Description"],
-    popupTemplate: popupWalks
+    popupTemplate: popupWalks,
   });
 
   map.add(walksLayer);
