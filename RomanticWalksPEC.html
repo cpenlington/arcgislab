@@ -24,7 +24,7 @@
     "esri/Graphic",
     "esri/layers/GraphicsLayer"
 
-    ], function(esriConfig,Map, MapView, Graphic, GraphicsLayer) {
+    ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer) {
     //Add API Key from ArgGIS Developers Dashboard
     esriConfig.apiKey = "AAPK4314a026491745d0a74bd0fc4027ebee9T3OP6WIH0WRl4BU3vKmir6Z3VGogrjIZ84N4kt6MhiM5erJZQm41nE4wPJ4Y-Be";
     const map = new Map({
@@ -43,11 +43,18 @@
     const graphicsLayer = new GraphicsLayer();
     map.add(graphicsLayer);
     
-    // Create a point
+    // Create point 1
     const point = { //Create a point
     type: "point",
     longitude: -77.22561727295617,
     latitude: 43.89663751451119
+    };
+    
+    // Create point 2
+    const point = { //Create a point
+    type: "point",
+    longitude: -77.12520877441315,
+    latitude: 44.00524890256277
     };
     
     //Create a marker
