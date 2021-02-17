@@ -47,16 +47,15 @@
    // }
    // }; 
     
-    var popupTemplate = new PopupTemplate({
-            title: "{Name}",
-            fieldInfos: "{Description}",
-            showAttachments: false,
-          });
+    //var popupTemplate = new PopupTemplate({
+            //title: "{Name}",
+           // fieldInfos: "{Description}",
+            //showAttachments: false,
+         // });
     
 //Trailheads feature layer (points)
   const walksLayer = new FeatureLayer({
-    url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/RomanticWalksPEC/FeatureServer/0",
-    infoTemplate: popupTemplate,
+    url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/RomanticWalksPEC/FeatureServer/0"
   });
 
   map.add(walksLayer);
